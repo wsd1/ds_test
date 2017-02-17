@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="deepstream.min.js"></script>
+    <script src="record_permission_test.js"></script>
+  </head>
+  <body>
+    <textarea rows="10" cols="50"> </textarea>
+    <script type="text/javascript">
+var txt = document.querySelector('textarea')
+
+var client = deepstream('localhost:6020').login({
+  username: 'app.catcher',
+  password: 'thisisatestkey' // NEEDS TO BE REAL
+}, handle)
+
+
+
+
+
+/*
+input.onkeyup = (function() {
+  record.set('info', txt.innerText)
+})
+client.event.subscribe('event/ot/info/255', function(value) {
+  txt.innerText = JSON.stringify(value)
+})
+
+client.record.listen('settings/.*', (match, isSubscribed, response) => {
+  console.log(match) // 'settings/security'
+  if (isSubscribed) {
+    if () {
+      response.accept()
+      // star publishing to this record via `client.record.getRecord(match).set()
+    } else {
+      response.reject() // let deepstream ask another provider
+    }
+  } else {
+    // stop publishing data
+    client.record.getRecord(match).discard()
+  }
+})
+
+
+*/
+
+
+
+    </script>
+  </body>
+</html>
+
+
