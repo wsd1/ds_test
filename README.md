@@ -1,6 +1,13 @@
 # ds特征测试
 ----
 
+## list_permission_test
+list 本质是record，其add、remove等都是在本地完成的。
+其测试逻辑 类似于 record_permission_test。
+
+
+
+
 ## record_permission_test
 
 用于测试 valve permission 对record订阅权限的影响。

@@ -2,7 +2,8 @@
 <html>
   <head>
     <script src="deepstream.js"></script>
-    <script src="record_permission_test.js"></script>
+    <script src="list_permission_test.js"></script>
+
   </head>
   <body>
     <textarea rows="10" cols="50"> </textarea>
@@ -10,9 +11,9 @@
 var txt = document.querySelector('textarea')
 
 var client = deepstream('localhost:6020').login({
-  username: 'app.catcher',
+  username: 'app.catch',
   password: 'thisisatestkey' // NEEDS TO BE REAL
-}, handle)
+}, handle);
 
 
 
