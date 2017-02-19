@@ -1,6 +1,9 @@
 # ds特征测试
 ----
 
+## rpc_test
+这个是用来测试provider和request的，有试过修改ds源码使其支持provider可获取发送方身份的尝试，这个用来检测结果。
+
 ## list_permission_test
 list 本质是record，其add、remove等都是在本地完成的。
 其测试逻辑 类似于 record_permission_test。

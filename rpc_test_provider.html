@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+
+    <textarea rows="10" cols="50">  </textarea>
+  </body>
+
+    <script src="deepstream.js"></script>
+    <script type="text/javascript">
+
+var txt = document.querySelector('textarea')
+
+var client = deepstream('localhost:6020').login({
+  username: 'app.catcher',
+  password: 'thisisatestkey' // NEEDS TO BE REAL
+}, handle)
+
+function handle(success, data){
+
+  if (success) {
+    console.log("Login success!!!!");
+
+    client.rpc.provide( 'app.catcher/status', ( rpc, response ) => {
+
+
+      //__ds_user_id__
+
+      txt.innerText = JSON.stringify(rpc)
+      console.log(rpc)
+
+      console.log("!!!")
+
+      for (var i in rpc) { 
+        console.log("--->" + i + ":" + rpc[i]);
+      }  
+
+
+
+      const call_obj = {};
+      call_obj.method = "DownCall";
+      call_obj.params = {};
+
+      //response.reject();
+      response.send(call_obj);
+
+      console.log("Acked")
+
+    });
+
+
+
+
+
+  } else {
+    // extra data can be optionaly sent from deepstream for
+    // both successful and unsuccesful logins
+    alert(data)
+
+    // client.getConnectionState() will now return
+    // 'AWAITING_AUTHENTICATION' or 'CLOSED'
+    // if the maximum number of authentication
+    // attempts has been exceeded.
+  }
+
+}
+    </script>
+
+</html>
+
+

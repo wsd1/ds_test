@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <button type="button">RPC</button>
+    <textarea rows="10" cols="50"> double click here to invoke rpc </textarea>
+  </body>
+
+    <script src="deepstream.js"></script>
+    <script type="text/javascript">
+
+var txt = document.querySelector('textarea')
+var btn = document.querySelector('button')
+
+var client = deepstream('localhost:6020').login({
+  username: 'user123',
+  password: 'thisisatestkey' // NEEDS TO BE REAL
+}, handle)
+
+function handle(success, data){
+
+  if (success) {
+    console.log("Login success!!!!");
+
+
+    btn.onclick = (function() {
+
+      var rpc = {};
+      rpc.method = "uCast.info";
+      rpc.params = {};
+      rpc.id = 12345;
+
+      var closure = {}
+      closure.D = 255;
+      closure.R = rpc;
+
+      client.rpc.make("app.catcher/status", closure, function(err, ret) {
+        txt.innerText = JSON.stringify(ret)
+        console.log(ret)
+      })
+
+    })
+
+  } else {
+    alert(data)
+  }
+
+}
+
+    </script>
+</html>
+
+
